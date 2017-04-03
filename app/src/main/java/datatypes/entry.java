@@ -5,17 +5,17 @@ package datatypes;
  */
 
 public class entry {
-    private String v_name;
-    private String v_borrowedBy;
+    private String name;
+    private String borrowedBy;
 
 
 
 
 
 
-    public void Entry(String p_name, String p_borrowedBy){
-        this.v_name = p_name;
-        this.v_borrowedBy = p_borrowedBy;
+    public void Entry(String name, String borrowedBy){
+        this.name = name;
+        this.borrowedBy = borrowedBy;
     }
 
 
