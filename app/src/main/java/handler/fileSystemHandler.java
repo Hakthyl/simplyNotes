@@ -1,20 +1,15 @@
 package handler;
 
 import android.content.Context;
-import android.util.JsonWriter;
 
-
-import org.json.JSONStringer;
-import org.json.JSONTokener;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.Gson;
 
-import datatypes.entry;
+import datatypes.listElement;
 
 /**
  * Created by Hannes on 03.04.2017.
@@ -35,9 +30,9 @@ public class fileSystemHandler {
     public void setContext(Context context){
         this.context = context;
     }
-    public boolean saveFile(entry entryToSave, String filename){
-        List<entry> savedData = this.loadData(filename);
-        savedData.add(entryToSave);
+    public boolean saveFile(listElement listElementToSave, String filename){
+        List<listElement> savedData = this.loadData(filename);
+        savedData.add(listElementToSave);
         FileOutputStream fOut;
         String dataToSave = GSON.toJson(savedData);
         try{
@@ -51,13 +46,13 @@ public class fileSystemHandler {
         }
         return true;
     }
-    public List<entry> loadData(String filename){
-        List<entry> loadedData;
+    public List<listElement> loadData(String filename){
+        List<listElement> loadedData;
         FileInputStream fIn;
         try{
             fIn = new FileInputStream(new File(this.appDirectory, filename));
           //TODO: laden byte[] => List
-           // loadedData = GSON.fromJson(fIn..toString(), List<entry>);
+           // loadedData = GSON.fromJson(fIn..toString(), List<listElement>);
         }
         catch(Exception e){
             e.printStackTrace();
@@ -69,7 +64,7 @@ public class fileSystemHandler {
 
         return true;
     }
-    public boolean deleteEntry(entry entryToDelete){
+    public boolean deleteEntry(listElement listElementToDelete){
 
         return true;
     }
