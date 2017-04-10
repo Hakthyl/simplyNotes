@@ -24,20 +24,17 @@ public class fileSystemHandler {
     private fileSystemHandler(){
         this.appDirectory = this.context.getFilesDir();
     }
-    public static fileSystemHandler getReferece(){
+    public static fileSystemHandler getReference(){
         return reference;
     }
     public void setContext(Context context){
         this.context = context;
     }
-    public boolean saveFile(listElement listElementToSave, String filename){
-        List<listElement> savedData = this.loadData(filename);
-        savedData.add(listElementToSave);
+    public boolean saveFile(String jsonDataToSave, String filename){
         FileOutputStream fOut;
-        String dataToSave = GSON.toJson(savedData);
         try{
             fOut = new FileOutputStream(new File(this.appDirectory, filename));
-            fOut.write(dataToSave.getBytes());
+            fOut.write(jsonDataToSave.getBytes());
             fOut.close();
         }
         catch(Exception e){
@@ -46,20 +43,29 @@ public class fileSystemHandler {
         }
         return true;
     }
-    public List<listElement> loadData(String filename){
-        List<listElement> loadedData;
+    //TODO:
+    /*
+    public List<T> loadData(String filename, T type){
+        List<T> loadedData = null;
         FileInputStream fIn;
+        String savedJson = "";
         try{
             fIn = new FileInputStream(new File(this.appDirectory, filename));
-          //TODO: laden byte[] => List
-           // loadedData = GSON.fromJson(fIn..toString(), List<listElement>);
+            int content;
+            while ((content = fIn.read()) != -1) {
+                // convert to char and display it
+                savedJson += (char) content;
+            }
+            loadedData = GSON.fromJson(savedJson, loadedData.getClass());
+            GSON.fro
         }
         catch(Exception e){
             e.printStackTrace();
             return null;
         }
-        return null;
+        return loadedData;
     }
+    */
     public boolean eraseData(){
 
         return true;
